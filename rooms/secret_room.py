@@ -1,9 +1,9 @@
 import pygame
-from room import Room
+from rooms.room import Room
 
 class SecretRoom(Room):
     def __init__(self, inventory):
-        super().__init__("Secret Room", "assets/images/secret_room.png")
+        super().__init__("Secret Room", "assets/images/secret_room.jpg")
         self.inventory = inventory
         self.dialog_text = (
             "Behind the hidden wall lies a chamber untouched for decades. Symbols mark the floor in chalk and blood."

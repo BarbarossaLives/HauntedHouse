@@ -1,12 +1,19 @@
 import pygame
 
+ROOM_WIDTH = 900
+ROOM_HEIGHT = 620
+
+
 class Room:
     def __init__(self, name, image_path):
         self.name = name
-        self.background = pygame.image.load(image_path).convert()
+        original_image = pygame.image.load(image_path).convert()
+        self.background = pygame.transform.scale(original_image, (ROOM_WIDTH, ROOM_HEIGHT))
         self.interactables = []  # List of {rect, dialog, callback (optional)}
         self.dialog_text = ""    # The last dialog triggered in this room
 
+    ROOM_AREA = pygame.Rect(0, 60, 900, 620)  # x, y, width, height
+    
     def add_interactable(self, rect, dialog_text, callback=None):
         """Add a clickable area with optional behavior."""
         self.interactables.append({
@@ -31,12 +38,29 @@ class Room:
         pass
 
     def draw(self, screen):
-        """Draw the background and (optionally) interactable areas."""
-        screen.blit(self.background, (0, 60))  # assumes 60px top for room title
+        # Draw room background
+        screen.blit(self.background, (0, 60))  # Top bar is 60px high
 
-        # For debugging: draw interactables
+        # Draw title bar
+        pygame.draw.rect(screen, (20, 20, 20), pygame.Rect(0, 0, 1200, 60))
+        font = pygame.font.Font(None, 36)
+        title = font.render(f"{self.name}", True, (255, 255, 0))
+        screen.blit(title, (20, 15))
+
+        # Draw dialog area
+        pygame.draw.rect(screen, (30, 30, 30), pygame.Rect(0, 680, 1200, 120))
+        dialog_font = pygame.font.Font(None, 28)
+        dialog = dialog_font.render(self.dialog_text, True, (255, 255, 255))
+        screen.blit(dialog, (20, 700))
+
+        # Draw interactable debug outlines (optional)
         for item in self.interactables:
             pygame.draw.rect(screen, (255, 0, 0), item['rect'], 2)
+
+
+            # For debugging: draw interactables
+            for item in self.interactables:
+                pygame.draw.rect(screen, (255, 0, 0), item['rect'], 2)
 
     def get_dialog(self):
         """Return the current dialog for display."""

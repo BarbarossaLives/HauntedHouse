@@ -1,9 +1,9 @@
 import pygame
-from room import Room
+from rooms.room import Room
 
 class DiningRoom(Room):
     def __init__(self, inventory):
-        super().__init__("Dining Room", "assets/images/dining_room.png")
+        super().__init__("Dining Room", "assets/images/dining_room.jpg")
         self.inventory = inventory
         self.dialog_text = (
             "The long dining table is set for a meal that never came. "

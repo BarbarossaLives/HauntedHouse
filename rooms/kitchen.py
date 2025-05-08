@@ -1,9 +1,9 @@
-creeate a compreensive table for the basement with all the dialog and collectable and eixit infor mation for all the roomsimport pygame
-from room import Room
+import pygame
+from rooms.room import Room
 
 class Kitchen(Room):
     def __init__(self, inventory):
-        super().__init__("Kitchen", "assets/images/kitchen.png")
+        super().__init__("Kitchen", "assets/images/kitchen.jpg")
         self.inventory = inventory
         self.dialog_text = (
             "Dust hangs in the air. The lights flicker as you enter, "

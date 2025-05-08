@@ -1,9 +1,9 @@
 import pygame
-from room import Room
+from rooms.room import Room
 
 class LivingRoom(Room):
     def __init__(self, inventory):
-        super().__init__("Living Room", "assets/images/living_room.png")
+        super().__init__("Living Room", "assets/images/living_room.jpg")
         self.inventory = inventory
         self.dialog_text = (
             "Dust motes dance in the filtered light. "

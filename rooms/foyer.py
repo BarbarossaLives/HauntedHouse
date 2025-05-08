@@ -1,9 +1,9 @@
 import pygame
-from room import Room
+from rooms.room import Room
 
 class Foyer(Room):
     def __init__(self, inventory):
-        super().__init__("Foyer", "assets/images/foyer.png")
+        super().__init__("Foyer", "assets/images/foyer.jpg")
         self.inventory = inventory
         self.dialog_text = "You step into the foyer of Hargrave Manor. It's silent. The air is thick with memory."
 
@@ -48,9 +48,15 @@ class Foyer(Room):
     # Placeholder transition methods — you can wire them up to room loading later
     def go_to_living_room(self):
         self.dialog_text = "You head toward the living room."
+        from room_manager import manager
+        manager.set_current_room("living_room")
 
     def go_to_dining_room(self):
         self.dialog_text = "You head toward the dining room."
+        from room_manager import manager
+        manager.set_current_room("dining_room")
 
     def go_to_stairs(self):
         self.dialog_text = "You begin ascending the creaking stairs."
+        #from room_manager import manager
+        #manager.set_current_room("upstairs_stairs_room")
