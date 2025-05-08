@@ -1,0 +1,13 @@
+Room,Element Type,Element Name,Dialog Text
+Wine Cellar,Item,Wine Rack,Rows of dusty wine bottles line the shelves. One rack seems newer than the rest…
+Wine Cellar,Item,Locked Cabinet,The cabinet creaks but won’t open. Something rattles inside—maybe a bottle?
+Wine Cellar,Exit,To Basement Stairs,A steep set of stairs creaks with every step. The door above feels very far away.
+Wine Cellar,Opening Dialog,Wine Cellar,The air is damp and heavy. A chill runs through the stone walls. You’ve entered the wine cellar of Hargrave Manor.
+Furnace Room,Item,Furnace Switch,A switch beside the furnace hums faintly. It looks recently used.
+Furnace Room,Item,Loose Pipe,A large pipe dangles from the ceiling. It rattles unnervingly when touched.
+Furnace Room,Exit,To Wine Cellar,A heavy wooden door leads back to the wine cellar. The air grows colder as you approach it.
+Furnace Room,Opening Dialog,Furnace Room,"Heat radiates from the furnace, though no fire is visible. Mechanical clanks echo from unseen depths."
+Secret Chamber,Item,Ancient Box,"The box is carved with unknown symbols. It hums softly, as if alive."
+Secret Chamber,Item,Glowing Symbol,A glowing symbol pulses on the far wall. The light seems to sync with your heartbeat.
+Secret Chamber,Exit,To Furnace Room,A narrow opening behind loose stones leads back to the furnace room.
+Secret Chamber,Opening Dialog,Secret Chamber,The walls are etched with ancient markings. This room feels untouched by time—and very aware of you.

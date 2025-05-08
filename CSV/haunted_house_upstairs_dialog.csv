@@ -1,0 +1,24 @@
+Room,Element Type,Element Name,Dialog Text
+Upstairs Hallway,Item,Portraits,Several portraits line the walls. One has eyes that seem freshly painted.
+Upstairs Hallway,Item,Cracked Floorboard,A loose floorboard creaks underfoot. Something might be hidden beneath it.
+Upstairs Hallway,Exit,To Master Bedroom,"The master bedroom door is slightly ajar, the air warmer near it."
+Upstairs Hallway,Exit,To Guest Bedroom,The guest bedroom door is closed. The brass handle is ice cold.
+Upstairs Hallway,Exit,To Child’s Bedroom,Faint music drifts from the child’s bedroom. The door rocks gently in place.
+Upstairs Hallway,Exit,To Bathroom,The bathroom door is fogged over—on the outside.
+Upstairs Hallway,Opening Dialog,Upstairs Hallway,A narrow hallway stretches in both directions. Moonlight filters through a dusty window. It feels like you're being watched from every door.
+Master Bedroom,Item,Jewelry Box,"The jewelry box clicks open. Inside, a faded locket and a folded scrap of sheet music."
+Master Bedroom,Item,Vanity Mirror,The mirror is smudged and cracked. Your reflection doesn’t seem quite right.
+Master Bedroom,Exit,To Upstairs Hallway,The hallway outside feels farther away than you remember.
+Master Bedroom,Opening Dialog,Master Bedroom,"The master bedroom is still and heavy with memory. Drapes hang like veils. The bed remains made, untouched for years."
+Guest Bedroom,Item,Curtains,"The curtains shift slightly, though no breeze can be felt. Something is scratching at the window."
+Guest Bedroom,Item,Armoire,"The armoire creaks open slowly. Inside, a coat still hangs—its pockets are turned out."
+Guest Bedroom,Exit,To Upstairs Hallway,"The hallway beyond feels warmer, safer somehow."
+Guest Bedroom,Opening Dialog,Guest Bedroom,"Everything in this room is neat, preserved, as if a guest was expected but never arrived."
+Child’s Bedroom,Item,Toy Chest,The chest is scratched and worn. Something inside rattles when the lid is touched.
+Child’s Bedroom,Item,Rocking Horse,The rocking horse sways slightly on its own.
+Child’s Bedroom,Exit,To Upstairs Hallway,You glance down the hallway. It feels darker than it should.
+Child’s Bedroom,Opening Dialog,Child’s Bedroom,"The room is filled with shadows of childhood—faded wallpaper, scattered toys, and an uneasy silence."
+Bathroom,Item,Mirror,The mirror is fogged up. Shapes shift faintly beneath the condensation.
+Bathroom,Item,Shower Curtain,The curtain moves slightly. You’re not sure if it was the draft or something else.
+Bathroom,Exit,To Upstairs Hallway,"The hallway outside is dim, as if the light can’t quite reach in."
+Bathroom,Opening Dialog,Bathroom,The bathroom is cold and damp. A faint trail of water leads from the tub to the door.
