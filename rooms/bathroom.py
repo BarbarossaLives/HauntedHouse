@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class Bathroom(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Bathroom", "assets/images/bathroom.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "The bathroom light flickers. The mirror is fogged, "
             "but something seems to move in the reflection even when you don’t."
@@ -25,7 +26,7 @@ class Bathroom(Room):
         )
 
     def trigger_mirror(self):
-        if "Mirror Event" not in self.inventory:
+        if not self.inventory.has_item("Mirror_Event"):
             self.inventory.append("Mirror Event")
             self.dialog_text = (
                 "The mirror flashes with a strange light. For a moment, "

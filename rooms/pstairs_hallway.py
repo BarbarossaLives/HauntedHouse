@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class UpstairsHallway(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Upstairs Hallway", "assets/images/upstairs_hallway.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "You step into the upstairs hallway. The silence here is more personal, more watching."
         )
@@ -41,7 +42,7 @@ class UpstairsHallway(Room):
         )
 
     def check_floorboard(self):
-        if "Hidden Item - Upstairs" not in self.inventory:
+        if not self.inventory.has_item("Hidden Item Upstairs"):
             self.inventory.append("Hidden Item - Upstairs")
             self.dialog_text = "You pry up the floorboard and find a small locket covered in dust."
         else:

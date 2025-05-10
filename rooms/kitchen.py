@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class Kitchen(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Kitchen", "assets/images/kitchen.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "Dust hangs in the air. The lights flicker as you enter, "
             "illuminating grime-covered counters and age-worn appliances."
@@ -47,7 +48,7 @@ class Kitchen(Room):
         )
 
     def pickup_key(self):
-        if "Rusted Key" not in self.inventory:
+        if not self.inventory.has_item("Rusted Key"):
             self.inventory.append("Rusted Key")
             self.dialog_text = "You take the rusted key, unsure what it might unlock."
         else:

@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class ChildsBedroom(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Child's Bedroom", "assets/images/childs_bedroom.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "The room is dimly lit. Faint music plays from a toy somewhere. "
             "Toys lie scattered, but something about their placement feels intentional."
@@ -25,7 +26,7 @@ class ChildsBedroom(Room):
         )
 
     def collect_drawing(self):
-        if "Child's Drawing" not in self.inventory:
+        if not self.inventory.has_item("Child's Drawing"):
             self.inventory.append("Child's Drawing")
             self.dialog_text = (
                 "The drawing shows the manor's layout—"

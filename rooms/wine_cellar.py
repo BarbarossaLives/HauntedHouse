@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class WineCellar(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Wine Cellar", "assets/images/wine_cellar.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "The air is damp and heavy. A chill runs through the stone walls of the cellar."
         )

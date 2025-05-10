@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class DiningRoom(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Dining Room", "assets/images/dining_room.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "The long dining table is set for a meal that never came. "
             "Dust-covered plates rest like silent witnesses."
@@ -36,7 +37,7 @@ class DiningRoom(Room):
         )
 
     def collect_code(self):
-        if "Faded Code" not in self.inventory:
+        if not self.inventory.has_item("Faded Code"):
             self.inventory.append("Faded Code")
             self.dialog_text = "You carefully pocket the faded code."
         else:

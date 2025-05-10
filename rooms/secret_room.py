@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class SecretRoom(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Secret Room", "assets/images/secret_room.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "Behind the hidden wall lies a chamber untouched for decades. Symbols mark the floor in chalk and blood."
         )
@@ -29,7 +30,7 @@ class SecretRoom(Room):
         )
 
     def pickup_tome(self):
-        if "Ancient Tome" not in self.inventory:
+        if not self.inventory.has_item("Ancient Tome"):
             self.inventory.append("Ancient Tome")
             self.dialog_text = "You take the tome. A cold sensation crawls up your spine."
         else:

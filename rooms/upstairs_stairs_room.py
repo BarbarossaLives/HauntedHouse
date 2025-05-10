@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class UpstairsStairsRoom(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Main Staircase", "assets/images/upstairs_stairs.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "The grand staircase rises ahead. The wood creaks under your step, "
             "and the air grows colder the higher you climb."
@@ -32,7 +33,7 @@ class UpstairsStairsRoom(Room):
         )
 
     def observe_portrait(self):
-        if "Stair Portrait Observed" not in self.inventory:
+        if not self.inventory.has_item("Stair Portrait"):
             self.inventory.append("Stair Portrait Observed")
             self.dialog_text = "Her gaze is unsettling. You swear the eyes moved."
         else:

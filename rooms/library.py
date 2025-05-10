@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class Library(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Library", "assets/images/library.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "The library smells of dust, leather, and secrets. "
             "Shelves tower high, packed with forgotten knowledge."
@@ -32,7 +33,7 @@ class Library(Room):
         )
 
     def shift_bookshelf(self):
-        if "Bookshelf Shifted" not in self.inventory:
+        if not self.inventory.has_item("Bookshelf Shifted"):
             self.inventory.append("Bookshelf Shifted")
             self.dialog_text = (
                 "You tug the odd book. The bookshelf groans as if something behind it has shifted..."

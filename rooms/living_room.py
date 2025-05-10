@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class LivingRoom(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Living Room", "assets/images/living_room.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "Dust motes dance in the filtered light. "
             "The silence is deeper here, like the room is holding its breath."

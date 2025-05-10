@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class GuestBedroom(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Guest Bedroom", "assets/images/guest_bedroom.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "The guest bedroom is tidy—too tidy. The air smells of mothballs and forgotten visits."
         )
@@ -24,7 +25,7 @@ class GuestBedroom(Room):
         )
 
     def read_suitcase_note(self):
-        if "Suitcase Note" not in self.inventory:
+        if not self.inventory.has_item("Suitcase Note"):
             self.inventory.append("Suitcase Note")
             self.dialog_text = "The note reads: 'Don't trust the portraits.' You shiver slightly."
         else:

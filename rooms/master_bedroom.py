@@ -2,9 +2,10 @@ import pygame
 from rooms.room import Room
 
 class MasterBedroom(Room):
-    def __init__(self, inventory):
+    def __init__(self, inventory, room_manager):
         super().__init__("Master Bedroom", "assets/images/master_bedroom.jpg")
         self.inventory = inventory
+        self.room_manager = room_manager
         self.dialog_text = (
             "The master bedroom smells of old perfume and velvet. "
             "The bed is still made, untouched by time or turmoil."
@@ -25,7 +26,7 @@ class MasterBedroom(Room):
         )
 
     def collect_ring(self):
-        if "Engraved Ring" not in self.inventory:
+        if not self.inventory.has_item("Engraved Ring"):
             self.inventory.append("Engraved Ring")
             self.dialog_text = "You pocket the ring. It feels unnaturally warm."
         else:
