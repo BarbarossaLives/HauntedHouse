@@ -2,10 +2,11 @@ import pygame
 from rooms.room import Room
 
 class UpstairsStairsRoom(Room):
-    def __init__(self, inventory, room_manager):
+    def __init__(self, inventory, room_manager, font):
         super().__init__("Main Staircase", "assets/images/upstairs_stairs.jpg")
         self.inventory = inventory
         self.room_manager = room_manager
+        self.font = font
         self.dialog_text = (
             "The grand staircase rises ahead. The wood creaks under your step, "
             "and the air grows colder the higher you climb."

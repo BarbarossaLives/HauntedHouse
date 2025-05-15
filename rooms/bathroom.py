@@ -2,10 +2,11 @@ import pygame
 from rooms.room import Room
 
 class Bathroom(Room):
-    def __init__(self, inventory, room_manager):
+    def __init__(self, inventory, room_manager, font):
         super().__init__("Bathroom", "assets/images/bathroom.jpg")
         self.inventory = inventory
         self.room_manager = room_manager
+        self.font = font
         self.dialog_text = (
             "The bathroom light flickers. The mirror is fogged, "
             "but something seems to move in the reflection even when you don’t."
@@ -13,16 +14,19 @@ class Bathroom(Room):
 
         # Item: Mirror
         self.add_interactable(
-            pygame.Rect(360, 220, 120, 100),  # Mirror
+            pygame.Rect(420, 150, 120, 200),  # Mirror
             "You wipe the mirror, but your reflection lingers a second too long.",
-            self.trigger_mirror
+            self.trigger_mirror,
+            "mirror"
+            
         )
 
         # Exit: Back to Upstairs Hallway
         self.add_interactable(
-            pygame.Rect(100, 400, 120, 160),  # To Hallway
+            pygame.Rect(700, 100, 160, 550),  # To Hallway
             "You step out into the hallway, shaken by what you saw.",
-            self.go_to_hallway
+            self.go_to_hallway,
+            "Hallway"
         )
 
     def trigger_mirror(self):
@@ -31,6 +35,7 @@ class Bathroom(Room):
             self.dialog_text = (
                 "The mirror flashes with a strange light. For a moment, "
                 "a second face appears beside yours, then vanishes."
+                
             )
         else:
             self.dialog_text = "The mirror shows only you now... or so it seems."

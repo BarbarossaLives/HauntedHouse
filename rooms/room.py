@@ -14,12 +14,15 @@ class Room:
 
     ROOM_AREA = pygame.Rect(0, 60, 900, 620)  # x, y, width, height
     
-    def add_interactable(self, rect, dialog_text, callback=None):
+    def add_interactable(self, rect, dialog_text, callback=None, label="", color=(255,0,0),font=None):
         """Add a clickable area with optional behavior."""
         self.interactables.append({
             'rect': rect,
             'dialog': dialog_text,
-            'callback': callback
+            'callback': callback,
+            'label': label,
+            'color': color,
+            'font': font
         })
 
     def handle_event(self, event):
@@ -61,6 +64,11 @@ class Room:
             # For debugging: draw interactables
             for item in self.interactables:
                 pygame.draw.rect(screen, (255, 0, 0), item['rect'], 2)
+                
+                label_surface = self.font.render(item['label'], True, (255,255,255))
+                label_rect = label_surface.get_rect()
+                label_rect.center = item['rect'].center
+                screen.blit(label_surface, label_rect)
 
     def get_dialog(self):
         """Return the current dialog for display."""

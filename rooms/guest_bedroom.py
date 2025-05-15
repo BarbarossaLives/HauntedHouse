@@ -2,26 +2,29 @@ import pygame
 from rooms.room import Room
 
 class GuestBedroom(Room):
-    def __init__(self, inventory, room_manager):
-        super().__init__("Guest Bedroom", "assets/images/guest_bedroom.jpg")
+    def __init__(self, inventory, room_manager,font):
+        super().__init__("Guest Bedroom", "assets/images/guest_new.jpg")
         self.inventory = inventory
         self.room_manager = room_manager
+        self.font = font
         self.dialog_text = (
             "The guest bedroom is tidy—too tidy. The air smells of mothballs and forgotten visits."
         )
 
         # Item: Dusty Suitcase
         self.add_interactable(
-            pygame.Rect(340, 320, 120, 90),  # Suitcase
+            pygame.Rect(5, 320, 120, 90),  # Suitcase
             "You open a dusty suitcase. Inside are clothes... and a note: 'Don't trust the portraits.'",
-            self.read_suitcase_note
+            self.read_suitcase_note,
+            "suitcase"
         )
 
         # Exit: Back to Upstairs Hallway
         self.add_interactable(
-            pygame.Rect(100, 400, 120, 160),  # To Upstairs Hallway
+            pygame.Rect(650, 100, 200, 500),  # To Upstairs Hallway
             "You quietly leave the guest bedroom.",
-            self.go_to_hallway
+            self.go_to_hallway,
+            "hallway"
         )
 
     def read_suitcase_note(self):

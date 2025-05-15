@@ -2,6 +2,8 @@ import pygame
 from items.inventory import Inventory
 from room_manager import RoomManager
 
+
+
 # Import all rooms from the rooms package
 from rooms.foyer import Foyer
 from rooms.kitchen import Kitchen
@@ -21,6 +23,7 @@ from rooms.bathroom import Bathroom
 
 # Initialize Pygame
 pygame.init()
+font = pygame.font.SysFont('Arial', 20)
 screen = pygame.display.set_mode((1200, 800))
 pygame.display.set_caption("Haunted House")
 clock = pygame.time.Clock()
@@ -30,21 +33,21 @@ inventory = Inventory()
 manager = RoomManager(inventory)
 
 # Register all room instances
-manager.register_room("foyer", Foyer(inventory, manager))
-manager.register_room("kitchen", Kitchen(inventory, manager))
-manager.register_room("living_room", LivingRoom(inventory, manager))
-manager.register_room("library", Library(inventory, manager))
-manager.register_room("dining_room", DiningRoom(inventory, manager))
-manager.register_room("wine_cellar", WineCellar(inventory, manager))
-manager.register_room("furnace_room", FurnaceRoom(inventory, manager))
-manager.register_room("secret_room", SecretRoom(inventory, manager))
-#manager.register_room("stairs", StairsRoom(inventory, manager))
-#manager.register_room("upstairs_stairs", UpstairsStairsRoom(inventory, manager))
-#manager.register_room("upstairs", UpstairsHallway(inventory, manager))
-manager.register_room("master", MasterBedroom(inventory, manager))
-manager.register_room("guest", GuestBedroom(inventory, manager))
-manager.register_room("childs", ChildsBedroom(inventory, manager))
-manager.register_room("bathroom", Bathroom(inventory, manager))
+manager.register_room("foyer", Foyer(inventory, manager, font))
+manager.register_room("kitchen", Kitchen(inventory, manager, font))
+manager.register_room("living_room", LivingRoom(inventory, manager, font))
+manager.register_room("library", Library(inventory, manager,font))
+manager.register_room("dining_room", DiningRoom(inventory, manager, font))
+manager.register_room("wine_cellar", WineCellar(inventory, manager, font))
+manager.register_room("furnace_room", FurnaceRoom(inventory, manager, font))
+manager.register_room("secret_room", SecretRoom(inventory, manager, font))
+#manager.register_room("stairs", StairsRoom(inventory, manager, font))
+#manager.register_room("upstairs_stairs", UpstairsStairsRoom(inventory, manager, font))
+#manager.register_room("upstairs", UpstairsHallway(inventory, manager, font))
+manager.register_room("master", MasterBedroom(inventory, manager, font))
+manager.register_room("guest", GuestBedroom(inventory, manager, font))
+manager.register_room("childs", ChildsBedroom(inventory, manager, font))
+manager.register_room("bathroom", Bathroom(inventory, manager, font))
 
 # Set the starting room
 manager.set_current_room("foyer") 

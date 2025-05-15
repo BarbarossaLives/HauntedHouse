@@ -2,10 +2,11 @@ import pygame
 from rooms.room import Room
 
 class ChildsBedroom(Room):
-    def __init__(self, inventory, room_manager):
+    def __init__(self, inventory, room_manager, font):
         super().__init__("Child's Bedroom", "assets/images/childs_bedroom.jpg")
         self.inventory = inventory
         self.room_manager = room_manager
+        self.font = font
         self.dialog_text = (
             "The room is dimly lit. Faint music plays from a toy somewhere. "
             "Toys lie scattered, but something about their placement feels intentional."
@@ -13,16 +14,18 @@ class ChildsBedroom(Room):
 
         # Item: Toy Box
         self.add_interactable(
-            pygame.Rect(320, 300, 100, 80),  # Toy Box
+            pygame.Rect(320, 200, 100, 250),  # Toy Box
             "You open the toy box. Inside, a music box... and a folded drawing of the manor.",
-            self.collect_drawing
+            self.collect_drawing,
+            "toybox"
         )
 
         # Exit: To Upstairs Hallway
         self.add_interactable(
-            pygame.Rect(100, 400, 120, 160),  # To Hallway
+            pygame.Rect(720, 200, 180,360),  # To Hallway
             "You step back into the hallway, the music fading behind you.",
-            self.go_to_hallway
+            self.go_to_hallway,
+            "Upstairs"
         )
 
     def collect_drawing(self):

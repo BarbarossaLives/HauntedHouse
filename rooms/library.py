@@ -2,10 +2,11 @@ import pygame
 from rooms.room import Room
 
 class Library(Room):
-    def __init__(self, inventory, room_manager):
+    def __init__(self, inventory, room_manager,font):
         super().__init__("Library", "assets/images/library.jpg")
         self.inventory = inventory
         self.room_manager = room_manager
+        self.font = font
         self.dialog_text = (
             "The library smells of dust, leather, and secrets. "
             "Shelves tower high, packed with forgotten knowledge."
@@ -13,23 +14,26 @@ class Library(Room):
 
         # Item: Bookshelf (atmospheric, maybe triggers secret?)
         self.add_interactable(
-            pygame.Rect(280, 200, 140, 200),  # Bookshelf
+            pygame.Rect(275, 120, 200, 300),  # Bookshelf
             "You scan the bookshelf... one of the books seems oddly placed.",
-            self.shift_bookshelf
+            self.shift_bookshelf,
+            "bookshelf"
         )
 
         # Item: Marked Book (collectible clue)
         self.add_interactable(
-            pygame.Rect(440, 240, 100, 80),  # Marked Book
+            pygame.Rect(210, 420, 100, 80),  # Marked Book
             "A book bound in red leather. You flip it open and see a handwritten message.",
-            self.collect_book
+            self.collect_book,
+            "Book"
         )
 
         # Exit: To Living Room
         self.add_interactable(
-            pygame.Rect(100, 400, 120, 160),
+            pygame.Rect(500, 100, 140, 400),
             "You return to the living room, head buzzing with new questions.",
-            self.go_to_living_room
+            self.go_to_living_room,
+            "living"
         )
 
     def shift_bookshelf(self):

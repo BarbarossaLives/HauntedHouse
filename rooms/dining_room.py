@@ -2,10 +2,11 @@ import pygame
 from rooms.room import Room
 
 class DiningRoom(Room):
-    def __init__(self, inventory, room_manager):
+    def __init__(self, inventory, room_manager, font):
         super().__init__("Dining Room", "assets/images/dining_room.jpg")
         self.inventory = inventory
         self.room_manager = room_manager
+        self.font = font
         self.dialog_text = (
             "The long dining table is set for a meal that never came. "
             "Dust-covered plates rest like silent witnesses."
@@ -13,27 +14,32 @@ class DiningRoom(Room):
 
         # Items
         self.add_interactable(
-            pygame.Rect(500, 180, 120, 200),  # Portrait
-            "A large portrait of a stern-faced man. The eyes almost seem to follow you."
+            pygame.Rect(40, 110, 140, 220),  # Portrait
+            "A large portrait of a stern-faced man. The eyes almost seem to follow you.",
+            "portraite"
         )
 
         self.add_interactable(
-            pygame.Rect(320, 400, 100, 60),  # Sideboard Drawer
+            pygame.Rect(60, 380, 200, 140),  # Sideboard Drawer
             "The drawer creaks open. Inside, a slip of paper with faded numbers—could this be a code?",
-            self.collect_code
+            self.collect_code,
+            "Sideboard"
         )
 
         # Exits
         self.add_interactable(
-            pygame.Rect(80, 250, 100, 150),  # To Foyer
+            pygame.Rect(500, 250, 100, 150),  # To Foyer
             "The foyer door remains ajar, the chill from the entrance still lingering.",
-            self.go_to_foyer
+            self.go_to_foyer,
+            "foyer"
+            
         )
 
         self.add_interactable(
-            pygame.Rect(700, 260, 120, 160),  # To Kitchen
+            pygame.Rect(700, 200, 120, 300),  # To Kitchen
             "The door to the kitchen swings on old hinges, revealing shadows beyond.",
-            self.go_to_kitchen
+            self.go_to_kitchen,
+            "kitchen"
         )
 
     def collect_code(self):
@@ -46,6 +52,8 @@ class DiningRoom(Room):
     # Placeholder transitions
     def go_to_foyer(self):
         self.dialog_text = "You return toward the foyer."
+       
 
     def go_to_kitchen(self):
         self.dialog_text = "You enter the darkened kitchen."
+       

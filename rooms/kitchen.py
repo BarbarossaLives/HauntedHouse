@@ -2,10 +2,11 @@ import pygame
 from rooms.room import Room
 
 class Kitchen(Room):
-    def __init__(self, inventory, room_manager):
-        super().__init__("Kitchen", "assets/images/kitchen.jpg")
+    def __init__(self, inventory, room_manager, font):
+        super().__init__("Kitchen", "assets/images/kitchen_new.jpg")
         self.inventory = inventory
         self.room_manager = room_manager
+        self.font = font
         self.dialog_text = (
             "Dust hangs in the air. The lights flicker as you enter, "
             "illuminating grime-covered counters and age-worn appliances."
@@ -13,38 +14,46 @@ class Kitchen(Room):
 
         # Items
         self.add_interactable(
-            pygame.Rect(220, 320, 100, 60),  # Stove
-            "The stove's surface is cold, but a faint warmth lingers beneath the burners."
+            pygame.Rect(140, 340, 150, 200),  # Stove
+            "The stove's surface is cold, but a faint warmth lingers beneath the burners.",
+            self.pickup_key,
+            "stove"
         )
 
         self.add_interactable(
-            pygame.Rect(340, 280, 100, 80),  # Cabinet
-            "Inside the cabinet, cracked dishes and a faded note: 'He said not to enter the basement...'."
+            pygame.Rect(330, 150, 200, 150),  # Cabinet
+            "Inside the cabinet, cracked dishes and a faded note: 'He said not to enter the basement...'.",
+            self.pickup_key,
+            "cabinet"
         )
 
         self.add_interactable(
-            pygame.Rect(460, 300, 100, 120),  # Refrigerator
+            pygame.Rect(530, 280, 100, 240),  # Refrigerator
             "The refrigerator creaks open. Empty, except for a rusted key tied with string.",
-            self.pickup_key
+            self.pickup_key,
+            "Fridge"
         )
 
         # Exits
         self.add_interactable(
-            pygame.Rect(70, 200, 100, 150),  # To Dining Room
+            pygame.Rect(5, 150, 100, 450),  # To Dining Room
             "The dining room door sits crooked on its hinges, letting in a draft.",
-            self.go_to_dining_room
+            self.go_to_dining_room,
+            "dining"
         )
 
         self.add_interactable(
-            pygame.Rect(680, 240, 100, 140),  # To Pantry
+            pygame.Rect(630, 150, 100, 400),  # To Pantry
             "A sliding door leads into a small pantry. Something shifts in the shadows.",
-            self.go_to_pantry
+            self.go_to_pantry,
+            "Pantry"
         )
 
         self.add_interactable(
-            pygame.Rect(900, 250, 120, 180),  # To Basement Stairs
+            pygame.Rect(750,100, 120, 400),  # To Basement Stairs
             "A heavy door with scratch marks leads to the basement stairs. It smells like mold and metal.",
-            self.go_to_basement
+            self.go_to_basement,
+            "basement"
         )
 
     def pickup_key(self):
