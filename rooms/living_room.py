@@ -5,7 +5,7 @@ class LivingRoom(Room):
     def __init__(self, inventory, room_manager, font):
         super().__init__("Living Room", "assets/images/living.jpg")
         self.inventory = inventory
-        self.room_manager = room_manager
+        self.manager = room_manager
         self.font = font
         self.dialog_text = (
             "Dust motes dance in the filtered light. "
@@ -16,14 +16,14 @@ class LivingRoom(Room):
         self.add_interactable(
             pygame.Rect(40, 150, 100, 130),  # Mirror
             "The mirror is clouded, but for a moment, a pale reflection moves where yours should be.",
-            self.go_to_foyer,
+            self.nothing(),
             "mirror"
         )
 
         self.add_interactable(
             pygame.Rect(480, 170, 100, 160),  # Picture Frame
             "The picture frame holds a faded photo. Scribbled on the back: 'They never saw it coming.'",
-            self.go_to_foyer,
+            self.nothing,
             "Picture Frame"
         )
 
@@ -41,10 +41,16 @@ class LivingRoom(Room):
             self.go_to_library,
             "library"
         )
-
+    def nothing(self):
+        pass
+    
     # Placeholder transition methods
     def go_to_foyer(self):
         self.dialog_text = "You step cautiously back toward the foyer."
+        #from room_manager import manager
+        self.manager.set_current_room("foyer")
 
     def go_to_library(self):
         self.dialog_text = "You cross the room and push open the door to the library."
+        #from room_manager import manager
+        self.manager.set_current_room("library")

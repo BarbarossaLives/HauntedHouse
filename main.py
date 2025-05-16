@@ -20,6 +20,7 @@ from rooms.master_bedroom import MasterBedroom
 from rooms.guest_bedroom import GuestBedroom
 from rooms.childs_bedroom import ChildsBedroom
 from rooms.bathroom import Bathroom
+from rooms.pantry import Pantry
 
 # Initialize Pygame
 pygame.init()
@@ -33,6 +34,7 @@ inventory = Inventory()
 manager = RoomManager(inventory)
 
 # Register all room instances
+manager.register_room("pantry", Pantry(inventory, manager, font))
 manager.register_room("foyer", Foyer(inventory, manager, font))
 manager.register_room("kitchen", Kitchen(inventory, manager, font))
 manager.register_room("living_room", LivingRoom(inventory, manager, font))
@@ -42,7 +44,7 @@ manager.register_room("wine_cellar", WineCellar(inventory, manager, font))
 manager.register_room("furnace_room", FurnaceRoom(inventory, manager, font))
 manager.register_room("secret_room", SecretRoom(inventory, manager, font))
 #manager.register_room("stairs", StairsRoom(inventory, manager, font))
-#manager.register_room("upstairs_stairs", UpstairsStairsRoom(inventory, manager, font))
+manager.register_room("upstairs_stairs", UpstairsStairsRoom(inventory, manager, font))
 #manager.register_room("upstairs", UpstairsHallway(inventory, manager, font))
 manager.register_room("master", MasterBedroom(inventory, manager, font))
 manager.register_room("guest", GuestBedroom(inventory, manager, font))

@@ -43,3 +43,4 @@ class SecretRoom(Room):
 
     def go_back(self):
         self.dialog_text = "You return to the furnace room, leaving the hidden chamber behind."
+        #manager.set_current_room("furnace")

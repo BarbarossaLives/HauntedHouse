@@ -1,5 +1,8 @@
+import pygame
+
+
 class Item:
-    def __init__(self, name, description="", can_use=False, image=None):
+    def __init__(self, name, image_path, description="", can_use=False):
         """
         Base class for all inventory items.
         
@@ -12,7 +15,11 @@ class Item:
         self.name = name
         self.description = description
         self.can_use = can_use
-        self.image = image  # Optional icon for inventory display
+        self.image_path=image_path
+        # Optional icon for inventory display
+        self.image = pygame.image.load(image_path).convert_alpha()
+
+
 
     def use(self, context=None):
         """

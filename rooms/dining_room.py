@@ -5,7 +5,7 @@ class DiningRoom(Room):
     def __init__(self, inventory, room_manager, font):
         super().__init__("Dining Room", "assets/images/dining_room.jpg")
         self.inventory = inventory
-        self.room_manager = room_manager
+        self.manager = room_manager
         self.font = font
         self.dialog_text = (
             "The long dining table is set for a meal that never came. "
@@ -16,7 +16,8 @@ class DiningRoom(Room):
         self.add_interactable(
             pygame.Rect(40, 110, 140, 220),  # Portrait
             "A large portrait of a stern-faced man. The eyes almost seem to follow you.",
-            "portraite"
+            self.nothing(),
+            "portrait"
         )
 
         self.add_interactable(
@@ -44,16 +45,20 @@ class DiningRoom(Room):
 
     def collect_code(self):
         if not self.inventory.has_item("Faded Code"):
-            self.inventory.append("Faded Code")
+            self.inventory.add_item("Faded Code")
             self.dialog_text = "You carefully pocket the faded code."
         else:
             self.dialog_text = "You already collected the code from the drawer."
-
+    def nothing(self):
+        pass
+    
     # Placeholder transitions
     def go_to_foyer(self):
         self.dialog_text = "You return toward the foyer."
-       
+        #from room_manager import manager
+        self.manager.set_current_room("foyer")
 
     def go_to_kitchen(self):
         self.dialog_text = "You enter the darkened kitchen."
-       
+       #from room_manager import manager
+        self.manager.set_current_room("kitchen")

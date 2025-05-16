@@ -1,7 +1,6 @@
 import pygame
 from rooms.room import Room
 
-
 class Foyer(Room):
     def __init__(self, inventory,room_manager, font):
         super().__init__("Foyer", "assets/images/foyer.jpg")
@@ -21,6 +20,7 @@ class Foyer(Room):
         self.add_interactable(
             pygame.Rect(190, 320, 60, 200),  # Umbrella Stand
             "An old umbrella stand. Empty... but it's been moved recently.",
+            self.nothing(),
             "Umbrella"
         )
 
@@ -54,6 +54,9 @@ class Foyer(Room):
         else:
             self.dialog_text = "You've already taken the Silver Key."
 
+    def nothing(self):
+        pass
+    
     # Placeholder transition methods — you can wire them up to room loading later
     def go_to_living_room(self):
         self.dialog_text = "You head toward the living room."
@@ -68,4 +71,4 @@ class Foyer(Room):
     def go_to_stairs(self):
         self.dialog_text = "You begin ascending the creaking stairs."
         #from room_manager import manager
-        #manager.set_current_room("upstairs_stairs_room")
+        self.manager.set_current_room("upstairs_stairs")

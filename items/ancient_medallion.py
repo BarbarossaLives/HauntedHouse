@@ -4,8 +4,10 @@ class AncientMedallion(Item):
     def __init__(self):
         super().__init__(
             name="Ancient Medallion",
+            image_path="items/ancient_medallion.py"
             description="A heavy medallion etched with cryptic runes.",
-            can_use=True
+            can_use=True,
+            
         )
 
     def use(self, context=None):

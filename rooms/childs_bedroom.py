@@ -5,7 +5,7 @@ class ChildsBedroom(Room):
     def __init__(self, inventory, room_manager, font):
         super().__init__("Child's Bedroom", "assets/images/childs_bedroom.jpg")
         self.inventory = inventory
-        self.room_manager = room_manager
+        self.manager = room_manager
         self.font = font
         self.dialog_text = (
             "The room is dimly lit. Faint music plays from a toy somewhere. "
@@ -30,7 +30,7 @@ class ChildsBedroom(Room):
 
     def collect_drawing(self):
         if not self.inventory.has_item("Child's Drawing"):
-            self.inventory.append("Child's Drawing")
+            self.inventory.add_item("Child's Drawing")
             self.dialog_text = (
                 "The drawing shows the manor's layout—"
                 "but there's a room drawn where none should be..."
@@ -40,3 +40,4 @@ class ChildsBedroom(Room):
 
     def go_to_hallway(self):
         self.dialog_text = "You return to the hallway, the door creaking softly shut."
+        self.manager.set_current_room("upstairs_stairs")

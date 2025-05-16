@@ -5,7 +5,7 @@ class MasterBedroom(Room):
     def __init__(self, inventory, room_manager, font):
         super().__init__("Master Bedroom", "assets/images/master.jpg")
         self.inventory = inventory
-        self.room_manager = room_manager
+        self.manager = room_manager
         self.font = font
         self.dialog_text = (
             "The master bedroom smells of old perfume and velvet. "
@@ -37,3 +37,4 @@ class MasterBedroom(Room):
 
     def go_to_hallway(self):
         self.dialog_text = "You quietly return to the upstairs hallway."
+        self.manager.set_current_room("upstairs_stairs")

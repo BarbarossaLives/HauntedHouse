@@ -5,7 +5,7 @@ class Bathroom(Room):
     def __init__(self, inventory, room_manager, font):
         super().__init__("Bathroom", "assets/images/bathroom.jpg")
         self.inventory = inventory
-        self.room_manager = room_manager
+        self.manager = room_manager
         self.font = font
         self.dialog_text = (
             "The bathroom light flickers. The mirror is fogged, "

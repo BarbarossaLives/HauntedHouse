@@ -5,7 +5,7 @@ class Kitchen(Room):
     def __init__(self, inventory, room_manager, font):
         super().__init__("Kitchen", "assets/images/kitchen_new.jpg")
         self.inventory = inventory
-        self.room_manager = room_manager
+        self.manager = room_manager
         self.font = font
         self.dialog_text = (
             "Dust hangs in the air. The lights flicker as you enter, "
@@ -58,7 +58,7 @@ class Kitchen(Room):
 
     def pickup_key(self):
         if not self.inventory.has_item("Rusted Key"):
-            self.inventory.append("Rusted Key")
+            self.inventory.add_item("Rusted Key")
             self.dialog_text = "You take the rusted key, unsure what it might unlock."
         else:
             self.dialog_text = "The refrigerator is empty now. Just rust and shadows."
@@ -66,9 +66,15 @@ class Kitchen(Room):
     # Placeholder transition methods
     def go_to_dining_room(self):
         self.dialog_text = "You push back into the dining room."
+        #from room_manager import manager
+        self.manager.set_current_room("dining_room")
 
     def go_to_pantry(self):
         self.dialog_text = "You open the pantry door and peer inside."
+        #from room_manager import manager
+        self.manager.set_current_room("pantry")
 
     def go_to_basement(self):
         self.dialog_text = "You steel yourself and open the basement door."
+        #from room_manager import manager
+        self.manager.set_current_room("wine_cellar")

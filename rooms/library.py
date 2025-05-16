@@ -5,7 +5,7 @@ class Library(Room):
     def __init__(self, inventory, room_manager,font):
         super().__init__("Library", "assets/images/library.jpg")
         self.inventory = inventory
-        self.room_manager = room_manager
+        self.manager = room_manager
         self.font = font
         self.dialog_text = (
             "The library smells of dust, leather, and secrets. "
@@ -38,7 +38,7 @@ class Library(Room):
 
     def shift_bookshelf(self):
         if not self.inventory.has_item("Bookshelf Shifted"):
-            self.inventory.append("Bookshelf Shifted")
+            self.inventory.add_item("Bookshelf Shifted")
             self.dialog_text = (
                 "You tug the odd book. The bookshelf groans as if something behind it has shifted..."
             )
@@ -46,11 +46,13 @@ class Library(Room):
             self.dialog_text = "The book’s already been moved. Something’s different here now."
 
     def collect_book(self):
-        if "Marked Book" not in self.inventory:
-            self.inventory.append("Marked Book")
+        if self.inventory.has_item("Marked Book"):
+            self.inventory.add_item("Marked Book")
             self.dialog_text = "The message inside reads: 'Only the medallion reveals the truth.'"
         else:
             self.dialog_text = "You’ve already read this clue."
 
     def go_to_living_room(self):
         self.dialog_text = "You return to the living room, the weight of knowledge in your hands."
+        #from room_manager import manager
+        self.manager.set_current_room("living_room")
